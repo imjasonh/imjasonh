@@ -58,5 +58,11 @@ Well, wouldn't you believe it, but you and I aren't the first people to experien
 
 The reason I know that is because the Go team has experienced this since basically forever, and came up with a pretty great way to solve this complexity problem.
 
+In addition to being a compiler, and a batteries-included standard library, `go` is also a CLI, that regularly interacts with files, any many various complicated environments. No matter how complicated our `calc` program gets, it almost certainly won't need as many tests as the `go` tool.
+
+While building and thoroughly testing `go`, the Go team also incidentally invented a simple [DSL](https://en.wikipedia.org/wiki/Domain-specific_language) to express test scenarios, in the [`internal/script`](https://github.com/golang/go/blob/78b43037dc20b9f5d624260b50e15bfa8956e4d5/src/cmd/internal/script/engine.go) directory. They presumably kept it safely nestled away in `internal` so they wouldn't get bogged down with maintaining any kind of backward compatibility contracts -- if they wanted to make a breaking change to the behavior or syntax of the `script` language, they'd be the only consumer to worry about.
+
+
+
 
 
