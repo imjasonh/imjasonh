@@ -8,12 +8,20 @@ Before that I was at [<img src="./redhat.png" alt="Red Hat" width="26" height="2
 
 I contribute to [`ko`](https://github.com/ko-build/ko) and [go-containerregistry](https://github.com/google/go-containerregistry), [Wolfi](https://wolfi.dev), [Apko](https://apko.dev), [Melange](https://github.com/chainguard-dev/melange), and a number of other things.
 
-I build fun toys like https://kontain.me and https://gcping.com.
+I sometimes build fun toys like:
+- [a Chrome extension to let you quickly switch to the tab making sound](https://github.com/imjasonh/chrome-sound)
+- [a container image registry that generates images on-demand](https://kontain.me)
+- [a page to show you how far away you are from every GCP datacenter](https://gcping.com)
+- [a plugin to manage GitHub issues in Google Sheets](https://github.com/imjasonh/gh-sheets)
+- [a Google Meet plugin that shows how many hours of human time this meeting has cost](https://github.com/imjasonh/meet-ticker)
+- [a script for generating presentations with automated voiceover](https://github.com/imjasonh/marptalk)
+- [a multiplayer chess game in your terminal, over SSH](https://github.com/imjasonh/chessh)
+- [a multiplayer old school FPS in your terminal, over SSH](https://github.com/imjasonh/terminus)
+- [a Git repo that always has changes to pull](https://github.com/imjasonh/infinite-git)
+- [an experiment to use Go as a scripting language](https://github.com/imjasonh/gos)
+- [a novel way to browse Git history](https://github.com/imjasonh/gitscrub)
 
-Sometimes I make Chrome extensions to make my own life easier, like [this one](https://github.com/imjasonh/chrome-sound) and [this one](https://github.com/imjasonh/chrome-sigstore).
-Maybe they'll make your life easier too, I have no idea.
-
-Sometimes I make lil GitHub actions to do interesting things:
+Sometimes I make lil GitHub actions to do useful things:
 - https://github.com/imjasonh/govulncheck-action
 - https://github.com/imjasonh/apidiff-action
 - https://github.com/chainguard-dev/malcontent-action
