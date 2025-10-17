@@ -12,7 +12,7 @@ I sometimes build fun toys like:
 - [a Chrome extension to let you quickly switch to the tab making sound](https://github.com/imjasonh/chrome-sound)
 - [a container image registry that generates images on-demand](https://kontain.me)
 - [a page to show you how far away you are from every GCP datacenter](https://gcping.com)
-- [a plugin to manage GitHub issues in Google Sheets](https://github.com/imjasonh/gh-sheets)
+- [a plugin to manage GitHub PRs in Google Sheets](https://github.com/imjasonh/gh-sheets)
 - [a Google Meet plugin that shows how many hours of human time this meeting has cost](https://github.com/imjasonh/meet-ticker)
 - [a script for generating presentations with automated voiceover](https://github.com/imjasonh/marptalk)
 - [a multiplayer chess game in your terminal, over SSH](https://github.com/imjasonh/chessh)
