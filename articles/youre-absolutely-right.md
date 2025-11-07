@@ -20,9 +20,9 @@ When confronted with repeated, slavish, sycophantic agreement, the result likewi
 
 I believe this exercise explains in part why AI has become such a phenomenon. LLMs are designed to be positive, agreeable, and collaborative. Outright sycophancy is endemic, to the point of cliché.
 
-The first group of people, who I'm willing to say are likely over-represented in the C-suite, love it and eat it up. They sell it to their friends, who naturally also eat it up.
+The first group of people, who I'm willing to say are likely over-represented in the proverbial "C-suite", love it and eat it up. They sell it to their C-suite friends, who naturally also eat it up.
 
-The second group of people tend to end up getting labeled as "AI skeptics" (some even self-identify) but I think this is a misunderstanding. They're positivity skeptics. Agreement skeptics. Self-skeptics. They were a lost cause the first time they saw an LLM say "you're absolutely right!" — it doesn't even matter what the question was, there's no way that's true.
+The second group of people tend to end up getting labeled as "AI skeptics", and some even self-identify, but I think this is a misunderstanding. They're positivity skeptics. Agreement skeptics. Self-skeptics. They were a lost cause the first time they saw an LLM say "you're absolutely right!" — it doesn't even matter what the question was, there's no way that's true.
 
 In both cases, biases are sticky, and by now it's too late for most of them.
 
@@ -38,10 +38,14 @@ There's a third kind of person, who hasn't decided whether to be sure of themsel
 
 These soft-brained youngins are where this AI thing really makes its mark, because their reaction to LLMs is still up in the air.
 
-AI Doomers might say the kids are cooked, and that an endless pipeline of generated positivity slop beamed directly into their noggins will produce a generation of cocksure assholes, doped up on the intoxicating high of being told they're infallible.
+AI Doomers might say the kids are cooked, and that an endless pipeline of generated positivity slop beamed directly into their lil' noggins will produce a generation of cocksure assholes, doped up on the intoxicating high of being told they're infallible.
 
-But maybe it's good to tell kids to believe in themselves, to get over the hump of self-skepticism and see what's on the other side. They'll fail, and hopefully try again, and learn something.
+But maybe it's good to tell kids to believe in themselves, actually? To get them over the hump of self-skepticism and see what's on the other side. They'll fail, and hopefully try again, and learn something.
 
----
+### What was this all about anyway?
 
-[_Summarize this article using Gemini_](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+If you have a strong negative or positive opinion of LLMs, _you are absolutely wrong._
+
+This is a large enough and new enough technology that nobody on earth has enough data about its impact on society and our planet to speak authoritatively. And, like all technology, there isn't even a right answer. Are cars "good"? Is a screwdriver a net positive? How about agriculture? Ponder this long enough and you'll end up with a degree in Philosophy. And nobody wants that.
+
+[✨_Summarize this article using Gemini_](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
