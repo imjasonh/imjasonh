@@ -48,4 +48,4 @@ If you have a strong negative or positive opinion of LLMs, _you are absolutely w
 
 This is a large enough and new enough technology that nobody on earth has enough data about its impact on society and our planet to speak authoritatively. And, like all technology, there isn't even a right answer. Are cars "good"? Is a screwdriver a net positive? How about agriculture? Ponder this long enough and you'll end up with a degree in Philosophy. And nobody wants that.
 
-[✨_Summarize this article using Gemini_](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+_[✨Summarize this article using Gemini](https://www.youtube.com/watch?v=dQw4w9WgXcQ)_
