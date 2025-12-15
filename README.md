@@ -30,6 +30,7 @@ Sometimes I make lil GitHub actions to do useful things:
 
 ## Talks
 
+- [Taming the Complexity Beast...](https://www.youtube.com/watch?v=VWi105l6tzs) at KubeCon NA 2025 w/ [Jon Ceanfaglione](https://github.com/chanfi0ne) and [Alex Zenla](https://github.com/azenla)
 - [From Kubernetes to Cloud Run: Chainguard's Journey](https://www.youtube.com/watch?v=2SWfcmcFjf4) on [Rawkode Academy](https://www.youtube.com/@RawkodeAcademy)
 - [The Maintainer Monologues](https://www.youtube.com/watch?v=Qf1_5rU-Fts) at KubeCon NA 2024 w/ [Sarah Christoff](https://github.com/schristoff), [Scott Rigby](https://github.com/scottrigby), [Karen Chu](https://github.com/karenhchu) and [Ryan Nowak](https://github.com/rynowak)
 - [Secure-by-Default Cloud Native Applications](https://www.youtube.com/watch?v=1yDN_kMjleM) at Cloud Native Rejekts NA Nov 2024 w/ [Jed Salazar](https://github.com/jedsalazar)
