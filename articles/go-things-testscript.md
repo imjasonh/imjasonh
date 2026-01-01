@@ -1,7 +1,7 @@
 # Go Things I Like: `testscript`
 
+http://articles.imjasonh.com/go-things-testscript.md<br>
 Jason Hall<br>
-http://articles.imjasonh.com/go-things-testscript.md
 _First published January 1, 2026_
 
 -----
