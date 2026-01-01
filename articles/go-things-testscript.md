@@ -1,7 +1,8 @@
 # Go Things I Like: `testscript`
 
 Jason Hall<br>
-_First published TODO_
+http://articles.imjasonh.com/go-things-testscript.md
+_First published January 1, 2026_
 
 -----
 
