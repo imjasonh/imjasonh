@@ -1,4 +1,4 @@
-# Go Things I Like: `testscript` and `txtar`
+# Go Things I Like: `testscript`
 
 Jason Hall<br>
 _First published TODO_
@@ -118,5 +118,7 @@ The featureset is intended to be as close as we could get to the Go version, and
 Expected: 'actual'
   Actual: 'expected'
 ```
+
+If you use `testscript-rs` and find bugs or inconsistencies with Go's `testscript`, or have ideas for UX improvements, please file an issue or send a PR!
 
 Some functionality is still missing, but I've used it in a few small side projects and overall been very happy with the results.
