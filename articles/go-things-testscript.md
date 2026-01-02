@@ -107,7 +107,9 @@ This is not only useful to human maintainers -- AI agents have also proven very 
 
 ### Oh and another thing!
 
-As a human I prefer reading/writing testscript because it's concise, succinct and removes a lot of boilerplate, especially around error handling. it just so happens this makes it a good tool for LLM agents as well. Tests that are concise and succinct also happen to efficiently use precious tokens.
+As a human, I prefer reading/writing testscript because it's concise, succinct and removes a lot of boilerplate, especially around error handling.
+
+It just so happens this makes it a good tool for LLM agents as well! Tests that are concise and succinct also happen to efficiently use precious tokens. LLM agents seemingly have no difficulty whatsoever learning new domain-specific languages, especially when the syntax is this simple.
 
 ### `testscript-rs`
 
