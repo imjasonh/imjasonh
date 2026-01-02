@@ -105,6 +105,10 @@ Common functionality can be refactored into more reusable `Cmds` which can get s
 
 This is not only useful to human maintainers -- AI agents have also proven very adept at writing and debugging tests in the simple testscript language, which naturally leads to more tests as you add functionality and find new corner cases.
 
+### Oh and another thing!
+
+As a human I prefer reading/writing testscript because it's concise, succinct and removes a lot of boilerplate, especially around error handling. it just so happens this makes it a good tool for LLM agents as well. Tests that are concise and succinct also happen to efficiently use precious tokens.
+
 ### `testscript-rs`
 
 I got so hooked on using `testscript` in my Go projects that I found myself wanting the same when I built Rust projects, so Claude and I ported `testscript` to Rust, which is available at https://crates.io/crates/testscript-rs
