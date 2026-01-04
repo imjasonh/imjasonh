@@ -1,0 +1,13 @@
+on:
+  workflow_dispatch:
+  schedule:
+  - cron: "0 * * * *" # hourly
+
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/setup-go@v4
+    - run: |
+        go mod download filippo.io/keygen@v0.0.0-20260104152007-9a235ce30d05 && go -C "$(go env GOPATH)/pkg/mod/filippo.io/keygen@v0.0.0-20260104152007-9a235ce30d05" test -c -o "$PWD"
+        ./keygen.test -test.timeout=0 -rsa-search 2048/128 -report "https://filippo-collector.exe.xyz/BC3C6PPFB27DJLOM7CEAADXIWC"
