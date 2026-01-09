@@ -1,0 +1,5 @@
+issuer: https://accounts.google.com
+subject_pattern: .*
+
+permissions:
+  contents: read
