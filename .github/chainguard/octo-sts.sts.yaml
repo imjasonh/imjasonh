@@ -1,4 +1,4 @@
-issuer: https://accounts.google.com
+issuer: https://issuer.enforce.dev
 subject_pattern: .*
 
 permissions:
