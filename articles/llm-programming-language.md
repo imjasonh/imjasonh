@@ -1,3 +1,6 @@
+# An LLM-centric Programming Language
+
+_Published January 11, 2026_
 
 On the most recent episode of Oxide and Friends, about predictions for 2026, I was inspired by one prediction in particular.
 
@@ -54,9 +57,11 @@ With that background out of the way, let's get back to the prediction: that ther
 
 So naturally, I asked Gemini to design a programming language for itself to use, optimized for token efficiency!
 
-It created **[B-IR]**, short for "Byte-encoded Intent Representation" (`beir` was right there, but okay). It also always stylized the language's name as `[B-IR]` with the brackets. Okay LLM, whatever you say.
+It created **`[B-IR]`**, short for "Byte-encoded Intent Representation". I pronounce it like "beer" in my head, but I don't know whether that was the intent and I never asked.
 
-It decided to optimize its language heavily for token usage, and to really take advantage of not needing to be readable. It wrote a [`manual.md`](https://github.com/imjasonh/b-ir/blob/main/manual.md), including this example:
+It also always stylized the language's name as `[B-IR]`, with the brackets. Okay LLM, whatever you say.
+
+It decided to optimize its language heavily for token usage, and to really take advantage of not needing to be readable. It wrote a [`manual.md`](https://github.com/imjasonh/b-ir/blob/17a87cae87e8f17e071379f393c96c2266ad78f9/manual.md), including this example:
 
 > Input: "Extract 50 bytes from the 'Logs' file and send to the 'Analysis' module only if the file is not empty."
 > Resulting [B-IR] Code:  ⌬[LOGS]ᚖ⫺{0}ᚕ{50}✂⫸⌬[ANALYSIS]⏀
@@ -71,10 +76,64 @@ So next we* got to work writing a compiler. I asked it how it would like to do t
 
 > \* when I say "we" I think you know I didn't have a lot of direct involvement.
 
+The only goal of this Python compiler was to be able to translate a minimal subset of [B-IR] code into assembly. Once the Python version of this was implemented, we would be able to write a [B-IR] compiler _in [B-IR] itself_, and then we would be off to the races.
+
 This exercise hit a wall pretty quickly though, because, surprisingly, the language in question was too cumbersome to express in Python!
 
 The mapping of B-IR operations to their associated assembly was confusing Gemini pretty badly, and it had a lot of difficulty producing a valid Mach-O binary from its Python code.
 
-At this point I switched to Claude Sonnet 4, and asked it what it would do differently.
+At this point I switched to Claude Opus, and asked it what it would do differently.
 
 ## TBIR: my _second_ LLM-centric programming language.
+
+Claude Opus threw `[B-IR]` straight out the window, and replaced its multi-byte unicode opcodes with single-byte opcodes.
+
+It kept the theme of unreadability alive though, and chose characters in the range `0x80-0x8B`. Real classics like [`padding character`](https://www.compart.com/en/unicode/U+0080), [`next line`](https://www.compart.com/en/unicode/U+0085) and [`partial line down`](https://www.compart.com/en/unicode/U+008b). It also dubbed its take on the language TBIR, short for "text-based B-IR" -- it didn't seem to care what [B-IR] meant. I can relate.
+
+When we got to work on the Python bootstrap compiler, and chugged away for a bit.
+
+Surprisingly, on its own, it decided that maintaining the unreadable character opcodes was tripping it up too, and switched to short English words to express its operations. From its README:
+
+> ```
+> init                    # Open argv[1] for reading
+> fetch                   # Read one byte (x21=count, w23=byte)
+> emit                    # Write byte from stack to stdout
+> print "text"            # Write literal string to stdout
+> ```
+
+With this optimization it was able to write a Python script to compile TBIR into Arm64 assembly in a [Mach-O file](https://en.wikipedia.org/wiki/Mach-O), and run it!
+
+```
+python3 birc.py source.tbir > output.s
+clang -arch arm64 output.s -o program
+```
+
+With that bootstrap compiler in place, Claude could write simple programs like `cat.tbir`:
+
+```
+# cat.tbir - Copy input to output
+# The simplest useful B-IR program
+
+init            # open input file
+:loop
+  fetch         # read one byte
+  emit          # write it
+  loop loop     # repeat until EOF
+exit
+```
+
+It even wrote [its own compiler in TBIR](https://github.com/imjasonh/b-ir/blob/f73a412b2c8ef960fe9b3ea284425cb862449898/l1-compiler.tbir), clocking in at just under 700 lines of code.
+
+With this bootstrapped compiler, we were off to the races.
+
+## ...except...
+
+I don't know about you, but I don't find TBIR to be that _...impressive?_ When I heard the prediction, I assumed the LLM-optimized language would be more ...exotic? Less comprehensible to mere mortals?
+
+This sort of just looks like assembly code, with some sugar. I'm pretty sure a human could read and write TBIR, if they had to.
+
+I wanted more.
+
+-----
+
+## TODO
