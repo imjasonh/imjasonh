@@ -4,7 +4,10 @@ http://articles.imjasonh.com/llm-programming-language.md<br>
 Jason Hall<br>
 _First published January 11, 2026_
 
-On the most recent episode of Oxide and Friends, about predictions for 2026, I was inspired by one prediction in particular.
+> [!NOTE]  
+> This article describes heavy use of LLMs, but the article itself was written completely by me, a human, without LLM augmentation.
+
+On the [most recent episode of Oxide and Friends, about predictions for 2026](https://oxide-and-friends.transistor.fm/episodes/predictions-2026), I was inspired by one prediction in particular.
 
 You can listen to it yourself, starting at around 35 minutes in. The [transcript](https://oxide-and-friends.transistor.fm/episodes/predictions-2026/transcript) says:
 
@@ -197,10 +200,28 @@ This is a _great_ error message for humans. It's as clear as it can be, direct, 
 
 In Loom, it might only return `E0716` and the LLM should be responsible for knowing how to fix that.
 
+Loom's spec is [**here**](https://github.com/imjasonh/b-ir/blob/376bda1c2c63f9c1954ecf63af0a5a59815ff7b5/loom.md)
+
+Here's a Loom code snippet that Gemini produced:
+
+```
+# Define Schema: {In:None, Out:f64}
+$tax_calc:
+  billing.get_inv 
+  -> last(3) 
+  -> ? (count==3)  // Correctness guard: Halt if < 3 invoices exist
+  -> map(.tax) 
+  -> sum 
+  -> !result       // Atomic commit
+```
+
+I don't know about you, but this still doesn't exactly scream to me "not human intelligible"! I've definitely seen code in many languages that's less intelligible than that.
+
 I'm optimistic that Loom may have some good ideas in it. And to be clear, they aren't _my_ ideas. I'm going to have Claude hack on the bootstrap compiler and write more when that's done.
 
 -----
 
-If any of these topics are interesting to you, I _strongly_ suggest chatting with your favorite LLM about it. It's been very enlightening thinking about what programming languages are _"for"_, and what one might look like in a post-LLM future.
+If any of these topics are interesting to you too, I _strongly_ suggest chatting with your favorite LLM about it. It's been very enlightening thinking about what programming languages are _"for"_, and what one might look like in a post-LLM future.
 
 It's never been easier or faster to take an idle idea and take it to a full-blown running program. And with any luck, we'll have a programming language made for LLMs, that makes it even faster. 😄
+
