@@ -1,4 +1,4 @@
-# An LLM-centric Programming Language
+# An LLM-optimized Programming Language
 
 _Published January 11, 2026_
 
@@ -22,7 +22,7 @@ But first...
 
 The idea is, basically, that LLMs consume and produce **`tokens`**, and that these are a precious resource. When reading source code or prompts or anything, they first chunk up the input into `tokens`, then use those as coordinates to traverse a gigantic multi-dimensional semantic space to figure out what you meant, and what they want to do.
 
-Traditional "human-centric" programming languages like Python, JavaScript, Go, Rust, etc., were designed before the concept of `tokens`, and were designed to give squishy humans words they could understand to express concepts to computers.
+Traditional "human-optimized" programming languages like Python, JavaScript, Go, Rust, etc., were designed before the concept of `tokens`, and were designed to give squishy humans words they could understand to express concepts to computers.
 
 Compilers or interpreters take those words, and translate them as closely as possible to the original human intent, to [assembly code](https://en.wikipedia.org/wiki/Assembly_language), which gets processed by an assembler into machine code, which processors in computers execute.
 
@@ -51,7 +51,7 @@ _This example is taken directly from the excellent [Compiler Explorer](https://g
 
 This lower-level representation is generally not intended to be written or read directly by humans -- that's what we have compilers for -- but in some situations it's necessary for a human to interact with it. It's not very ergonomic, sort of by design. This is the middle-ground between what a human should be able to understand, and what a computer's processor needs to execute instructions.
 
-## B-IR: my first LLM-centric programming language
+## B-IR: my first LLM-optimized programming language
 
 With that background out of the way, let's get back to the prediction: that there will be a programming language designed from the start to be optimized for LLM usage. Humans don't have to read or write or undestand it. The goal is to let an LLM express its intent as token-efficiently as possible.
 
@@ -84,7 +84,7 @@ The mapping of B-IR operations to their associated assembly was confusing Gemini
 
 At this point I switched to Claude Opus, and asked it what it would do differently.
 
-## TBIR: my _second_ LLM-centric programming language.
+## TBIR: my _second_ LLM-optimized programming language.
 
 Claude Opus threw `[B-IR]` straight out the window, and replaced its multi-byte unicode opcodes with single-byte opcodes.
 
@@ -132,8 +132,73 @@ I don't know about you, but I don't find TBIR to be that _...impressive?_ When I
 
 This sort of just looks like assembly code, with some sugar. I'm pretty sure a human could read and write TBIR, if they had to.
 
-I wanted more.
+I wanted _more._
+
+## What does "LLM-optimized" even _mean?_
+
+Sure, being able to express a concept in as few tokens as possible is _important_, but is that it? It seemed like hyper-optimizing that actually led to worse outcomes, and maybe something more like assembly code is the optimal language for token usage. Maybe assembly code is _actually_ the best language for that -- the whole process demonstrated that Gemini and Claude are both perfectly capable of reading, writing, understanding and debugging assembly issues. Remarkably good even. There must have been lots of assembly in its training data.
+
+Maybe they even got to spend an afternoon playing around with Compiler Explorer.
+
+That made me think that maybe an existing language is actually already LLM-optimized in some way, because for popular languages like Python and JavaScript there's _tons_ of training data out there. And not just huge code dumps, but the human language around that code -- design docs, readmes, code reviews, bug reports, release notes, tutorials, everything. Maybe the most LLM-optimized language had been ✨inside us the whole time✨.
+
+Nah, screw that, we're giving it another shot.
+
+I'd gotten too focused on LLM token optimization specifically, and neglected to think about what else might make an LLM-optimized language _experience_ better. Aside from token optimization, there are other things that trip up LLMs.
+
+**Ambiguity** is a huge problem for LLMs. For example, when they process some variable `foo`, they need to be able to understand whether that's a local or global variable. If it's present in both scopes, it has to figure out which `foo` it's talking about.
+
+Loose typing is similar: if `foo` can be an integer at one point and later a string, the LLM has to spend some of its precious tokens and weights keeping that straight. 
+
+When an LLM inevitably gets confused by that ambiguity, the compiler or interpreter will tell it what's wrong, and the LLM can fix it, but that loop wastes _many_ more tokens than would have been optimized by a slimmer syntax.
+
+**Indentation** also trips up LLMs, even though they've seen plenty of Python to know better. Having whitespace be syntactically meaningful means that it's very important for a specific number of tokens to be emitted, and LLMs are not very good at counting.
+
+**Remembering Intent** is another killer. When a user prompts the LLM to add some behavior to the program, the LLM needs to remember that intent, for as long as that behavior should live. LLMs are generally pretty good at handling this in human-optimized languages, by adding comments -- sometimes _excessive_ comments -- saying what it's doing, so it can remember later.
+
+These comments aren't even necessarily so a human knows what's going on, these can really just be useful for the LLM to remember things related to the surrounding code. An LLM-optimized programming language would still have comments!
+
+I also made up a term, **Validation Locality**. While an LLM is writing code, it should also be writing tests that validate that code. In languages like Go or Python, that tends to mean writing `foo.go` and `foo_test.go` as separate files. This means that those two contexts are relatively far apart in the LLM's context window. Rust lets you write tests directly alongside the code being tested, which is an improvement, but those test methods are still outside the function under test. This separation is for the benefit of the human user, to disambiguate the code that runs in the program from the code that tests the code.
+
+An LLM-optimized programming language could have test code intermixed with the program code, and could better understand they're doing different things.
+
+There's honestly a lot to think about when you step back and consider why our programming languages are the way they are.
+
+With these insights in mind, I started a new conversation with Gemini, and it clued me in to even more.
+
+## Loom - my third LLM-optimized programming language
+
+Gemini came up with **Loom**, ("Language for Object-Oriented Models"), which is not only token-dense, but also has tight unambiguous scoping, and whose functions must express their inputs and outputs, including preconditions and post-conditions (e.g., "returns a number less than 100", or "takes a string matching this regex").
+
+In Loom, stack traces are augmented with unique error codes that map to specific prompts to fix those errors. In Rust, you might see an error message like
+
+```
+5 |     let scores = inputs().iter().map(|(a, b)| {
+  |                  ^^^^^^^^ creates a temporary which is freed while still in use
+6 |         a + b
+7 |     });
+  |       - temporary value is freed at the end of this statement
+8 |     println!("{}", scores.sum::<i32>());
+  |                    ------ borrow later used here
+  help: consider using a `let` binding to create a longer lived value
+  |
+5 ~     let binding = inputs();
+6 ~     let scores = binding.iter().map(|(a, b)| {
+  |
+
+For more information about this error, try `rustc --explain E0716`.
+```
+
+_(copied from the great [Julia Evans](https://jvns.ca/blog/2022/12/02/a-couple-of-rust-error-messages/))_
+
+This is a _great_ error message for humans. It's as clear as it can be, direct, and even recommends how to fix it. But, that's a lot of tokens for an LLM to process each time it forgets a `let`.
+
+In Loom, it might only return `E0716` and the LLM should be responsible for knowing how to fix that.
+
+I'm optimistic that Loom may have some good ideas in it. And to be clear, they aren't _my_ ideas. I'm going to have Claude hack on the bootstrap compiler and write more when that's done.
 
 -----
 
-## TODO
+If any of these topics are interesting to you, I _strongly_ suggest chatting with your favorite LLM about it. It's been very enlightening thinking about what programming languages are _"for"_, and what one might look like in a post-LLM future.
+
+It's never been easier or faster to take an idle idea and take it to a full-blown running program. And with any luck, we'll have a programming language made for LLMs, that makes it even faster. 😄
