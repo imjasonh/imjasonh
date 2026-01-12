@@ -1,6 +1,8 @@
 # An LLM-optimized Programming Language
 
-_Published January 11, 2026_
+http://articles.imjasonh.com/llm-programming-language.md<br>
+Jason Hall<br>
+_First published January 1, 2026_
 
 On the most recent episode of Oxide and Friends, about predictions for 2026, I was inspired by one prediction in particular.
 
