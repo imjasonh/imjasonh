@@ -7,6 +7,9 @@ _First published January 11, 2026_
 > [!NOTE]  
 > This article describes heavy use of LLMs, but the article itself was written completely by me, a human, without LLM augmentation.
 
+> [!WARNING]
+> I'm not a programming language expert by any stretch of the imagination, and you don't have to be either.
+
 On the [most recent episode of Oxide and Friends, about predictions for 2026](https://oxide-and-friends.transistor.fm/episodes/predictions-2026), I was inspired by one prediction in particular.
 
 You can listen to it yourself, starting at around 35 minutes in. The [transcript](https://oxide-and-friends.transistor.fm/episodes/predictions-2026/transcript) says:
