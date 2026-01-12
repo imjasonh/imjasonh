@@ -217,7 +217,11 @@ $tax_calc:
 
 I don't know about you, but this still doesn't exactly scream to me "not human intelligible"! I've definitely seen code in many languages that's less intelligible than that.
 
-I'm optimistic that Loom may have some good ideas in it. And to be clear, they aren't _my_ ideas. I'm going to have Claude hack on the bootstrap compiler and write more when that's done.
+I think it's very interesting to realize that "LLM-optimized" doesn't have to mean "unintelligble". And the things that the things that make an LLM-optimized language useful -- fast, clear error messages, unambiguous scope, forgiving syntax -- also happen to make them easier for humans!
+
+I'm optimistic that Loom may have some good ideas in it, and I'm excited to learn more. And to be clear, they aren't _my_ ideas.
+
+For now, it's getting late, I'm going to have Claude hack on the bootstrap compiler and write more when that's done.
 
 -----
 
